@@ -1,0 +1,25 @@
+# Фрагмент Resource/config/services/messenger.yaml продукта.
+# Очередь `{slug}.billing` объявляет продукт и привязывает её к exchange `billing.events`
+# только со своим кодом. Команд от продукта к Billing нет.
+
+framework:
+    messenger:
+        transports:
+            billing-events-in:
+                dsn: '%env(PLATFORM_MESSENGER_TRANSPORT_DSN)%'
+                retry_strategy:
+                    max_retries: 3
+                    delay: 5000
+                    multiplier: 3
+                options:
+                    exchange:
+                        name: billing.events
+                        type: direct
+                    queues:
+                        my-product.billing:
+                            binding_keys: ['my-product']
+        routing: { }
+
+# Классы IWD\BillingSdk\Message\Event\* лежат в vendor и автоконфигурацию не проходят.
+# Локальные копии с #[AsMessage(transport: 'billing-events-in')] — в src/Common/Messages/Billing/Event/,
+# обработчик проекции — в PlatformProjection/Billing.

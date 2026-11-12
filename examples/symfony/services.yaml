@@ -1,0 +1,9 @@
+# Фрагмент config/services.yaml продукта после opt-in Billing.
+# Полный чеклист: sibling billing/INTEGRATION.md
+
+services:
+    IWD\BillingSdk\BillingClient:
+        arguments:
+            $httpClient: '@http_client'
+            $baseUrl: '%env(BILLING_BASE_URL)%'
+            $token: '%env(PLATFORM_SERVICE_TOKEN)%'
