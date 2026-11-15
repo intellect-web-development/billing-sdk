@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Billing;
+namespace IWD\BillingSdk\Examples\Symfony;
 
 use IWD\BillingSdk\BillingClient;
 use IWD\BillingSdk\Purchase;
@@ -10,7 +10,7 @@ use IWD\BillingSdk\PurchaseItem;
 use IWD\BillingSdk\PurchaseLine;
 
 /**
- * Пример шлюза. Домен продукта импортирует этот класс, не SDK.
+ * Пример шлюза. В продукте копируйте в App\Common\Billing (или свой BC); домен импортирует адаптер, не SDK.
  * Списание Accounting и выдача доступа Tariffication остаются в продукте и идут до recordPurchase.
  */
 final readonly class BillingGateway
