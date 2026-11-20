@@ -10,7 +10,7 @@ use IWD\BillingSdk\PurchaseItem;
 use IWD\BillingSdk\PurchaseLine;
 
 /**
- * Пример шлюза. В продукте копируйте в App\Common\Billing (или свой BC); домен импортирует адаптер, не SDK.
+ * Пример шлюза. В продукте копируйте в App\PlatformProjection\Billing (или свой BC); домен импортирует адаптер, не SDK.
  * Списание Accounting и выдача доступа Tariffication остаются в продукте и идут до recordPurchase.
  */
 final readonly class BillingGateway
